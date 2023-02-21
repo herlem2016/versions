@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="referrer" content="origin-when-cross-origin">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
+		<style>
+			:root{
+				--factor:0.63;
+				--alto:100vh;
+				--ancho:calc(100vh / var(--factor));
+				--fontSize:calc(0.115*var(--alto));
+			}
+			@keyframes rotar {
+			  from {transform: rotate(0deg);}
+			  to{transform: rotate(40deg);}
+			}
+			@keyframes it-1 {
+			  from {left: -30%;}
+			  to {left:0px;}
+			}
+			@keyframes it-2 {
+			  from {left:100%;top: 50px;}
+			  to{left:calc(var(--alto)*0.26);top:50px;}
+			}
+			@keyframes it-4 {
+			  from {bottom:-50%;}
+			  to{bottom:14%;}
+			}
+			@keyframes it-3 {
+			  0% {top:-25px;left:-50px;}
+			  25%{top:-50px;left:62%;}
+			  50%{top:calc(var(--alto)*0.26);left:62%;}
+			  75%{top:calc(var(--alto)*0.26);left:-50px;}
+			  100%{top:-25px;left:-50px;}
+			}
+			@keyframes run-grua {
+				0% 	{transform: scaleX(-1); bottom:53%;left:-50px;}
+				12.5%	{transform: scaleX(-1);bottom:53%;left:12%;}
+				17%	{transform: scaleX(-1) rotate(-90deg);bottom:53%;left:10.6%;}
+				30%	{transform: scaleX(-1) rotate(-90deg);bottom:0%;left:10.6%;}
+				32%	{transform: scaleX(-1) rotate(0deg);bottom:0%;left:10.6%;}
+				50%	{transform: scaleX(-1);bottom:0%;left:84%;}
+				50.1%	{transform: scaleX(1);bottom:0%;left:84%;}
+				60%	{transform: rotate(0deg);bottom:0%;left:80%;}	
+				62%	{transform: rotate(0deg);bottom:0%;left:80%;}	
+				75%	{transform: rotate(0deg);bottom:0%;left:10.6%;}
+				77%	{transform: rotate(90deg);bottom:0%;left:10.6%;}
+				90%	{transform: rotate(90deg);bottom:53%;left:10.6%;}	
+				92%	{transform: rotate(0deg);bottom:53%;left:10.6%;}	
+				98%{transform: rotate(0deg); bottom:53%;left:-150px;}	
+				100%{transform: rotate(0deg); bottom:53%;left:-150px;}	
+			}
+			.rotate{
+				animation: rotar 1s linear infinite;
+			}
+			@font-face {
+			  font-family: "basefont";
+			  src: 
+				url("fonts/Manrope/static/Manrope-Regular.ttf") format("opentype");
+			}
+			@font-face {
+			  font-family: "basefontbold";
+			  src: 
+				url("fonts/Manrope/static/Manrope-Bold.ttf") format("opentype");
+			}
+			
+			@font-face {
+			  font-family: "basefontbolder";
+			  src: 
+				url("fonts/Manrope/static/Manrope-ExtraBold.ttf") format("opentype");
+			}
+
+			
+			*{box-sizing:border-box;}
+			html,body{height:100%;margin:0px;font-family:basefont;background-color:#e1dddc;}
+			b{font-family:basefontbold;}
+			.container{height:100%;margin:0px auto 0px auto;width:var(--ancho);}
+			.icon{width:30px;height:30px;}
+			.left-1 {height:100%;float:left;width:calc(0.32*var(--ancho));overflow:hidden;}
+			.right-1{height:100%;float:right;width:calc(0.65*var(--ancho));overflow:hidden;}
+			.top-left,.top-right{height:74%;width:100%;overflow:hidden;}
+			.bottom-left,.bottom-right{height:26%;width:100%;overflow:hidden;border-top:2px solid #bbb;}
+			.bottom-right .left,.bottom-right .right{float:left;width:47%;margin-left:2%;padding:2.5%;}
+			.bottom-right span{margin-left:5px;}
+			.bottom-right p{font-size:calc(0.8*var(--fontSize));color:#666;}
+			.top-left{width:100%;margin:auto;}
+			.top-left h1{font-size: var(--fontSize);text-align: center;margin: 0px;margin-top: 0.4em;line-height: 1.1em;}
+			.top-left .bottom{padding:5px 10px;margin-top:1.5em;text-align:center;}
+			.top-left .bottom button{margin-right:15px;background-color:#111;color:#eee;border:0px;border-radius:3em;text-align: center;padding:0.7em;}
+			.top-left .bottom a{text-decoration:underline;}
+			.bottom-left{width:80%;margin:auto;border-top:0px}
+			.bottom-left .top{border-radius: 1em;background-color: rgba(155,142,134,0.7);padding: 0.7em;margin-top: 0px;}
+			.bottom-left .top h2{color:#333;margin: 0px;}
+			.bottom-left .top p{color:#666;margin-top: 0px;}
+			.left-1 .top-left span{color:#333;}
+			.bottom-left .bottom{width:78%;margin:auto;border-bottom-left-radius:2em;border-bottom-right-radius:2em;height:50px;background-color:#fff;}
+			
+			.top-right{position:relative;}
+			.float-1{z-index:+1;animation:it-1 3s 1;padding:3%;position:absolute;top:50px;left:0px;width:calc(var(--alto)*0.26);height:calc(var(--alto)*0.18);border-radius: 1em;background-color: rgba(155,142,134,0.8);margin-top: 0px;}
+			
+			.float-1 img{height:30px;display:block;margin:0px auto 15px auto;}
+			.float-1 img.suv{margin-top:20%;height:auto;width:75%;}
+			.float-1 p{margin-top:1em;margin-bottom:0px;}
+			.wrap-rotate{padding-top:3%;width:14.5%;position:absolute;bottom:0px;left:0px;border-top:2px solid #bbb;border-right:2px solid #bbb;border-top-right-radius:40px;height:53%;}
+			.rotate{width:calc(var(--alto)*0.13);}
+			
+			.grua-view-top{animation:run-grua 20s linear infinite;animation-delay: 7s;height:6%;position:absolute;bottom:53%;transform: scaleX(-1);left:-50px;}
+			.point{width:5%;position:absolute;bottom:0px;right:0px;}
+			
+			.main-right{animation:it-2 3s 1;left:calc(var(--alto)*0.26);top:50px;position:relative;}
+			.main-right .corner-top{animation:it-3 3s 1;animation-delay:3s;z-index:+2;width:calc(var(--ancho)*0.06);position:absolute;top:-25px;left:-50px;}
+			.main-right img.main{opacity:0.9;position:absolute;width:65%;top:0px;left:0px;border-radius:20px;z-index:+1;border:5px solid rgba(155,142,134,0.8);}
+			
+			.img-h-1{animation:it-4 2s 1; position:absolute;width:30%;bottom:14%;left:25%; border-radius:20px;}
+			.img-h-2{animation:it-4 2s 1; position:absolute;width:30%;bottom:14%;right:10%;border-radius:20px;}
+			
+			.corner-right{width:140px;position:absolute;right:0px;text-align:right;top:50px;width:16%;}
+			.corner-right h1{font-size:1.5em;margin-bottom:0px;}
+			.corner-right span{font-size:0.8em;}
+			.aux-opacity{width:69%;height:calc(var(--alto)*0.45);background: linear-gradient(rgba(155,142,134,0.8), transparent);position:absolute;right:calc(var(--ancho)*0.05);top:calc(var(--alto)*0.25);border-radius:1.5em;}
+			.aux-opacity-right{width:10%;height:40%;background: linear-gradient(rgba(155,142,134,0.3), transparent);position:absolute;right:-5%;top:27%;border-radius:1.5em;}
+			
+			.container .text-general,.top-left .bottom button{font-size:calc(0.21*var(--fontSize))}
+			.container .text-general-c{font-size:calc(0.18*var(--fontSize))}
+			.container .text-general-p{font-size:calc(0.14*var(--fontSize));margin-top:0px;}
+			.container .text-subtitulos{font-size:calc(0.23*var(--fontSize))}
+			.container .text-titulos-m{font-size:calc(0.4*var(--fontSize))}
+						
+			@media (orientation: landscape) {
+			}
+
+			@media (orientation: portrait) {
+				.container .left-1 {width:100%;}
+				.container .right-1{width:100%;}
+				.bottom-left {text-align:center;}
+				--ancho:100vw; 
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left-1">
+				<div class="top-left">
+					<br/><br/>
+					<img class="icon" src="img/picture.png"/><span class="text-general">Confianza y Experiencia <b>en el Trasaldo</b></span>
+					<h1>Arrastre<br/><b>Gruas<br/> HEMI</b></h1>
+					<div class="bottom text-general">
+						<button>Genera un folio</button>
+						<img class="icon" src="img/picture.png"/><a>Rastrear  folio</a>
+					</div>
+				</div>
+				<div class="bottom-left">
+					<div class="top">
+						<h2 class="text-titulos-m"><b> + Seguridad</b></h2>
+						<p class="text-general">Cada cliente atendido recibe calidez y seguridad.</p>
+					</div>
+					<div class="bottom">
+						<img src="img/picture.png"/><img src="img/picture.png"/><img src="img/picture.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="right-1">				
+				<div class="top-right">
+					<div class="float-1">
+						<img src="img/grid.png"/>
+						<img class="suv" src="img/b-suv.png"/>
+					</div>
+					<img class="grua-view-top" src="img/grua-r.png"/>
+					<div class="wrap-rotate"><img class="rotate" src="img/circle-rot.png"/></div>
+					<div class="main-right">
+						<img class="corner-top" src="img/flecha.png"/>
+						<img class="main" src="img/equipo.jpg"/>
+					</div>
+					<div class="corner-right">
+						<div class="top">
+							<h1 class="text-titulos-m"><b> +50</b></h1>
+							<span class="text-general-c">Años</span>
+						</div>
+						<div class="bottom"></div>
+					</div>
+					<div class="aux-opacity"></div>
+					<div class="aux-opacity-right"></div>
+					<img class="img-h-1" src="img/history-1.jpeg"/>
+					<img class="img-h-2" src="img/history-2.jpeg"/>
+					<img class="point" src="img/o-point.png"/>					
+				</div>
+				<div class="bottom-right">
+					<div class="left">
+						<img class="icon" src="img/picture.png"/><span class="text-subtitulos"><b>Misión</b></span>
+						<p class="text-general-p">Somos una empresa líder de grúas, con alta calidad y eficiencia, prestando servicios de arrastre, salvamento y resguardo de vehículos, garantizando la satisfacción total; a través de nuestra infraestructura de vanguardia, innovación, tecnología, capacidad, experiencia y profesionalismo humano para cumplir con los requerimientos del autotransporte terrestre.</p>
+					</div>
+					<div class="right">
+						<img class="icon" src="img/picture.png"/><span class="text-subtitulos"><b>Visión</b></span>
+						<p class="text-general-p"> Somos una empresa comprometida con el autotransporte liderando y trascendiendo para los servicios de arrastre, salvamento y resguardo de vehículos, con la más alta calidad, infraestructura, logística y vanguardia.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

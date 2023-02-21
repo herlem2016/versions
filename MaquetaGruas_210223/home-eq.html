@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es-ES">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="referrer" content="origin-when-cross-origin">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
+		<style>
+			:root{
+				--factor:0.63;
+				--alto:100vh;
+				--ancho:calc(100vh / var(--factor));
+				--fontSize:calc(0.115*var(--alto));
+			}
+			@keyframes rotar {
+			  from {transform: rotate(0deg);}
+			  to {transform: rotate(360deg);}
+			}
+			@keyframes it-1 {
+			  from {left: -30%;}
+			  to {left:0px;}
+			}
+			@keyframes it-2 {
+			  from {left:100%;top: 100%;}
+			  to{left:calc(var(--alto)*0.24);top:50px;}
+			}
+			@keyframes it-3 {
+			  0% {top:-50px;left:-50px;}
+			  25%{top:-50px;left:calc(var(--ancho)*0.24);}
+			  50%{top:calc(100vh*0.46);left:calc(var(--ancho)*0.24);}
+			  75%{left:-50px;top:calc(100vh*0.46);}
+			  100%{top:-50px;left:-50px;}
+			}
+			.rotate{
+				animation: rotar 2s infinite;
+			}
+			@font-face {
+			  font-family: "basefont";
+			  src: 
+				url("fonts/Manrope/static/Manrope-Regular.ttf") format("opentype");
+			}
+			@font-face {
+			  font-family: "basefontbold";
+			  src: 
+				url("fonts/Manrope/static/Manrope-Bold.ttf") format("opentype");
+			}
+			
+			@font-face {
+			  font-family: "basefontbolder";
+			  src: 
+				url("fonts/Manrope/static/Manrope-ExtraBold.ttf") format("opentype");
+			}
+
+			
+			*{box-sizing:border-box;}
+			html,body{height:100%;margin:0px;font-family:basefont;background-color:#e1dddc;}
+			b{font-family:basefontbold;}
+			.container{height:100%;margin:0px auto 0px auto;width:var(--ancho);}
+			.icon{width:30px;height:30px;}
+			.left-1 {height:100%;float:left;width:calc(0.32*var(--ancho));overflow:hidden;}
+			.right-1{height:100%;float:right;width:calc(0.54*var(--ancho));overflow:hidden;}
+			.top-left,.top-right{height:74%;width:100%;overflow:hidden;}
+			.bottom-left,.bottom-right{height:26%;width:100%;overflow:hidden;border-top:2px solid #bbb;}
+			.bottom-right .left,.bottom-right .right{float:left;width:47%;margin-left:2%;padding:2.5%;}
+			.bottom-right span{margin-left:5px;}
+			.bottom-right p{font-size:calc(0.8*var(--fontSize));color:#666;}
+			.top-left{width:100%;margin:auto;}
+			.top-left h1{font-size: var(--fontSize);text-align: center;margin: 0px;margin-top: 0.4em;line-height: 1.1em;}
+			.top-left .bottom{padding:5px 10px;margin-top:1.5em;text-align:center;}
+			.top-left .bottom button{margin-right:15px;background-color:#111;color:#eee;border:0px;border-radius:3em;text-align: center;padding:0.7em;}
+			.top-left .bottom a{text-decoration:underline;}
+			.bottom-left{width:80%;margin:auto;border-top:0px}
+			.bottom-left .top{border-radius: 1em;background-color: rgba(155,142,134,0.7);padding: 0.7em;margin-top: 0px;}
+			.bottom-left .top h2{color:#333;margin: 0px;}
+			.bottom-left .top p{color:#666;margin-top: 0px;}
+			.left-1 .top-left span{color:#333;}
+			.bottom-left .bottom{width:78%;margin:auto;border-bottom-left-radius:2em;border-bottom-right-radius:2em;height:50px;background-color:#fff;}
+			
+			.top-right{position:relative;}
+			.float-1{z-index:+1;animation:it-1 3s 1;padding:3%;position:absolute;top:50px;left:0px;width:calc(var(--alto)*0.24);height:calc(var(--alto)*0.24);border-radius: 1em;background-color: rgba(155,142,134,0.8);margin-top: 0px;}
+			
+			.float-1 img{height:30px;display:block;margin:0px auto 15px auto;}
+			.float-1 p{margin-top:1em;margin-bottom:0px;}
+			.wrap-rotate{padding-top:3%;width:20%;position:absolute;bottom:0px;left:0px;border-top:2px solid #bbb;border-right:2px solid #bbb;border-top-right-radius:40px;height:55%;}
+			.rotate{width:calc(var(--alto)*0.14);}
+			
+			.main-right{animation:it-2 3s 1;left:calc(var(--alto)*0.24);top:50px;position:relative;}
+			.main-right .corner-top{animation:it-3 3s 1;animation-delay:3s;z-index:+2;width:calc(var(--ancho)*0.08);position:absolute;top:-50px;left:-50px;}
+			.main-right img.main{opacity:0.9;position:absolute;width:calc(var(--ancho)*0.28);height:calc(100vh*0.50);top:0px;left:0px;border-radius:20px;z-index:+1;}
+			
+			.corner-right{width:140px;position:absolute;top:0px;right:30px;text-align:center;}
+			.corner-right h1{font-size:1.5em;margin-bottom:0px;}
+			.corner-right span{font-size:0.8em;}
+			.aux-opacity{width:calc(var(--ancho)*0.22);height:calc(var(--alto)*0.45);background: linear-gradient(rgba(155,142,134,0.8), transparent);position:absolute;right:calc(var(--ancho)*0.05);top:calc(var(--alto)*0.17);border-radius:1.5em;}
+			
+			.container .text-general,.top-left .bottom button{font-size:calc(0.21*var(--fontSize))}
+			.container .text-general-c{font-size:calc(0.18*var(--fontSize))}
+			.container .text-subtitulos{font-size:calc(0.23*var(--fontSize))}
+			.container .text-titulos-m{font-size:calc(0.4*var(--fontSize))}
+						
+			@media (orientation: landscape) {
+			}
+
+			@media (orientation: portrait) {
+				.container .left-1 {width:100%;}
+				.container .right-1{width:100%;}
+				.bottom-left {text-align:center;}
+				--ancho:100vw; 
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left-1">
+				<div class="top-left">
+					<br/><br/>
+					<img class="icon" src="img/picture.png"/><span class="text-general">Confianza y Experiencia <b>en el Trasaldo</b></span>
+					<h1>Arrastre<br/><b>Gruas<br/> HEMI</b></h1>
+					<div class="bottom text-general">
+						<button>Genera un folio</button>
+						<img class="icon" src="img/picture.png"/><a>Rastrear  folio</a>
+					</div>
+				</div>
+				<div class="bottom-left">
+					<div class="top">
+						<h2 class="text-titulos-m"><b> + Seguridad</b></h2>
+						<p class="text-general">Cada cliente atendido recibe calidez y seguridad.</p>
+					</div>
+					<div class="bottom">
+						<img src="img/picture.png"/><img src="img/picture.png"/><img src="img/picture.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="right-1">				
+				<div class="top-right">
+					<div class="float-1">
+						<img src="img/grid.png"/>
+						<p class="text-general">Deja<br/> tu auto en <br/>nuestras manos.</p>
+					</div>
+					<div class="wrap-rotate"><img class="rotate" src="img/circle-rot.png"/></div>
+					<div class="main-right">
+						<img class="corner-top" src="img/flecha.png"/>
+						<img class="main" src="img/grua-eq.jpg"/>
+					</div>
+					<div class="corner-right">
+						<div class="top">
+							<h1 class="text-titulos-m"><b>+ 70K</b></h1>
+							<span class="text-general-c">Servicios</span>
+						</div>
+						<div class="bottom"></div>
+					</div>
+					<div class="aux-opacity"></div>					
+				</div>
+				<div class="bottom-right">					
+					<div class="left">
+						<img class="icon" src="img/picture.png"/><span class="text-subtitulos"><b>Subscriptions</b></span>
+						<p class="text-general">Make your money analysis faster and create your own way of saving on payments.</p>
+					</div>
+					<div class="right">
+						<img class="icon" src="img/picture.png"/><span class="text-subtitulos"><b>Mobile Application</b></span>
+						<p class="text-general">Shows income, expenses, credit, score, saving goals, net worth, investments.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
